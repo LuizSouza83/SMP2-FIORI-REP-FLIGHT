@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Analytics.v1" Alias="Analytics"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CODELIST',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.CodeList.v1" Alias="SAP__CodeList"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_MEASURES',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Validation.V1" Alias="Validation"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="ZPCE_VIEW_SFLIGHT_CDS" xml:lang="pt" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <Annotation Term="Core.SchemaVersion" String="1.0.0" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <EntityType Name="ZPCE_VIEW_SCARRType" sap:label="Companhia aérea" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Carrid"/>
+                </Key>
+                <Property Name="Carrid" Type="Edm.String" Nullable="false" MaxLength="3" sap:display-format="UpperCase" sap:label="Companhia aérea" sap:quickinfo="Denominação breve da companhia aérea"/>
+                <Property Name="Carrname" Type="Edm.String" MaxLength="20" sap:label="Companhia aérea" sap:quickinfo="Nome de uma companhia aérea"/>
+                <Property Name="Currcode" Type="Edm.String" MaxLength="5" sap:display-format="UpperCase" sap:label="Moeda comp.aérea" sap:quickinfo="Moeda interna da companhia aérea" sap:semantics="currency-code"/>
+                <Property Name="Url" Type="Edm.String" MaxLength="255" sap:label="URL" sap:quickinfo="URL de uma companhia aérea"/>
+            </EntityType>
+            <EntityType Name="ZPCE_VIEW_SFLIGHTType" sap:label="Vôo" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Carrid"/>
+                    <PropertyRef Name="Connid"/>
+                    <PropertyRef Name="Fldate"/>
+                </Key>
+                <Property Name="Carrid" Type="Edm.String" Nullable="false" MaxLength="3" sap:display-format="UpperCase" sap:label="Companhia aérea" sap:quickinfo="Denominação breve da companhia aérea"/>
+                <Property Name="Connid" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="NonNegative" sap:label="Nº de conexão" sap:quickinfo="Código da conexão de voo individual"/>
+                <Property Name="Fldate" Type="Edm.DateTime" Nullable="false" Precision="0" sap:display-format="Date" sap:label="Data do vôo" sap:quickinfo="Data do voo"/>
+                <Property Name="Carrname" Type="Edm.String" MaxLength="20" sap:label="Companhia aérea" sap:quickinfo="Nome de uma companhia aérea"/>
+                <Property Name="Currcode" Type="Edm.String" MaxLength="5" sap:display-format="UpperCase" sap:label="Moeda comp.aérea" sap:quickinfo="Moeda interna da companhia aérea" sap:semantics="currency-code"/>
+                <Property Name="Url" Type="Edm.String" MaxLength="255" sap:label="URL" sap:quickinfo="URL de uma companhia aérea"/>
+                <NavigationProperty Name="to_companhia" Relationship="ZPCE_VIEW_SFLIGHT_CDS.assoc_1FD23D7D4D1C041D02EFC9DD70B3EA3E" FromRole="FromRole_assoc_1FD23D7D4D1C041D02EFC9DD70B3EA3E" ToRole="ToRole_assoc_1FD23D7D4D1C041D02EFC9DD70B3EA3E"/>
+            </EntityType>
+            <Association Name="assoc_1FD23D7D4D1C041D02EFC9DD70B3EA3E" sap:content-version="1">
+                <End Type="ZPCE_VIEW_SFLIGHT_CDS.ZPCE_VIEW_SFLIGHTType" Multiplicity="1" Role="FromRole_assoc_1FD23D7D4D1C041D02EFC9DD70B3EA3E"/>
+                <End Type="ZPCE_VIEW_SFLIGHT_CDS.ZPCE_VIEW_SCARRType" Multiplicity="0..1" Role="ToRole_assoc_1FD23D7D4D1C041D02EFC9DD70B3EA3E"/>
+            </Association>
+            <EntityContainer Name="ZPCE_VIEW_SFLIGHT_CDS_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="ZPCE_VIEW_SCARR" EntityType="ZPCE_VIEW_SFLIGHT_CDS.ZPCE_VIEW_SCARRType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZPCE_VIEW_SFLIGHT" EntityType="ZPCE_VIEW_SFLIGHT_CDS.ZPCE_VIEW_SFLIGHTType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <AssociationSet Name="assoc_1FD23D7D4D1C041D02EFC9DD70B3EA3E" Association="ZPCE_VIEW_SFLIGHT_CDS.assoc_1FD23D7D4D1C041D02EFC9DD70B3EA3E" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZPCE_VIEW_SFLIGHT" Role="FromRole_assoc_1FD23D7D4D1C041D02EFC9DD70B3EA3E"/>
+                    <End EntitySet="ZPCE_VIEW_SCARR" Role="ToRole_assoc_1FD23D7D4D1C041D02EFC9DD70B3EA3E"/>
+                </AssociationSet>
+            </EntityContainer>
+            <Annotations Target="ZPCE_VIEW_SFLIGHT_CDS.ZPCE_VIEW_SFLIGHT_CDS_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ApplyMultiUnitBehaviorForSortingAndFiltering" Bool="true"/>
+            </Annotations>
+            <Annotations Target="ZPCE_VIEW_SFLIGHT_CDS.ZPCE_VIEW_SFLIGHT_CDS_Entities/ZPCE_VIEW_SFLIGHT" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_companhia"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <atom:link rel="self" href="http://ndc-srvhana.opus-idc.com.br:8000/sap/opu/odata/sap/ZPCE_VIEW_SFLIGHT_CDS/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="http://ndc-srvhana.opus-idc.com.br:8000/sap/opu/odata/sap/ZPCE_VIEW_SFLIGHT_CDS/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

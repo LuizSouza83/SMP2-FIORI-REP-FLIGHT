@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
+
+specVersion: "3.1"
+metadata:
+  name: com.pce.zpce.ui5.freestyle.cds.odata
+type: application
+builder:
+  resources:
+    excludes:
+      - /test/**
+      - /localService/**
+  customTasks:
+    - name: deploy-to-abap
+      afterTask: generateCachebusterInfo
+      configuration:
+        target:
+          url: http://ndc-srvhana.opus-idc.com.br:8000
+          client: "250"
+        app:
+          name: ZPCEUI5CDS
+          description: Projeto Cloud Evolution 2004
+          package: ZPCE
+          transport: S4HK901581
+        exclude:
+          - /test/
